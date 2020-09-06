@@ -10,7 +10,6 @@ class Transaction extends Model
 {
     protected $fillable = [
         "quanity",
-        "price",
         "buyer_id",
         "product_id"
     ];
