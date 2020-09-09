@@ -6,9 +6,13 @@ use App\Transaction;
 use App\Seller;
 use App\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
 
     const AVAILABLE = "available";
     const UNAVAILABLE = "unavailable";

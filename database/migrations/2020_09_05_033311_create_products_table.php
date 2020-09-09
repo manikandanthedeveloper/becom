@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('seller_id')->unsigned();
             $table->string('status')->default(Product::UNAVAILABLE);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('seller_id')->references('id')->on('users');
         });
