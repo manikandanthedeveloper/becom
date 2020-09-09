@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\ApiController;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ApiController;
 
 class UserController extends ApiController
 {
