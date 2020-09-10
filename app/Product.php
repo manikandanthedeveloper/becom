@@ -27,15 +27,19 @@ class Product extends Model
         "status"
     ];
 
+    protected $hidden = [
+        'pivot'
+    ];
+    
     public function isAvailable() {
         return $this->status == Product::AVAILABLE;
     }
 
-    public function seller() {
+    public function sellers() {
         return $this->belongsTo(Seller::class);
     }
 
-    public function transaction() {
+    public function transactions() {
         return $this->hasMany(Transaction::class);
     }
 
