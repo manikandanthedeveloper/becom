@@ -12,10 +12,10 @@ class Product extends Model
 {
     use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
-
     const AVAILABLE = "available";
     const UNAVAILABLE = "unavailable";
+    
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         "name",
@@ -35,7 +35,7 @@ class Product extends Model
         return $this->status == Product::AVAILABLE;
     }
 
-    public function sellers() {
+    public function seller() {
         return $this->belongsTo(Seller::class);
     }
 

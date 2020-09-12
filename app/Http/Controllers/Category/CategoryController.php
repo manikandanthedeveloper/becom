@@ -33,9 +33,9 @@ class CategoryController extends ApiController
         ];
 
         $this->validate($request, $rules);
-        $category = Category::create($request->all());
+        $newCategory = Category::create($request->all());
 
-        return $this->showOne($category, 201);
+        return $this->showOne($newCategory, 201);
     }
 
     /**

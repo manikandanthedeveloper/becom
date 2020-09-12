@@ -15,7 +15,7 @@ class Transaction extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        "quanity",
+        "quantity",
         "buyer_id",
         "product_id"
     ];
