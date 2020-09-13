@@ -32,6 +32,7 @@ trait ApiResponser
           $collection = $this->sortData($collection, $transformer);
           $collection = $this->paginate($collection);
           $collection = $this->transformData($collection, $transformer);
+          $collection = $this->cacheResponse($collection);
 
 		return $this->successResponse($collection, $code);
 	}
@@ -107,19 +108,19 @@ trait ApiResponser
 		return $transformation->toArray();
 	}
 
-	// protected function cacheResponse($data)
-	// {
-	// 	$url = request()->url();
-	// 	$queryParams = request()->query();
+	protected function cacheResponse($data)
+	{
+		$url = request()->url();
+		$queryParams = request()->query();
 
-	// 	ksort($queryParams);
+		ksort($queryParams);
 
-	// 	$queryString = http_build_query($queryParams);
+		$queryString = http_build_query($queryParams);
 
-	// 	$fullUrl = "{$url}?{$queryString}";
+		$fullUrl = "{$url}?{$queryString}";
 
-	// 	return Cache::remember($fullUrl, 30/60, function() use($data) {
-	// 		return $data;
-	// 	});
-	// }
+		return Cache::remember($fullUrl, 60, function() use($data) {
+			return $data;
+		});
+	}
 }
