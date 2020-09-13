@@ -4,9 +4,11 @@ use App\Transaction;
 namespace App;
 
 use App\Scopes\BuyerScope;
+use App\Transformers\BuyerTransformer;
 
 class Buyer extends User
 {
+    public $transformer = BuyerTransformer::class;
 
     protected static function boot()
     {
