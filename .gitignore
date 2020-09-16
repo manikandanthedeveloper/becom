@@ -1,0 +1,9 @@
+/node_modules
+/public/storeage
+/public/hot
+/storeage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+.env
