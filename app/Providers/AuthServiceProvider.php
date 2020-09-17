@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Buyer;
+use App\Policies\BuyerPolicy;
+use App\Policies\SellerPolicy;
+use App\Product;
+use App\Seller;
+use App\Transaction;
 use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -15,7 +21,11 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        Buyer::class => BuyerPolicy::class,
+        Seller::class => SellerPolicy::class,
+        User::class => UserPolicy::class,
+        Transaction::class => TransactionPolicy::class,
+        Product::class => ProductPolicy::class 
     ];
 
     /**
@@ -26,6 +36,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        Gate::define('admin-action', function ($user) {
+            return $user->isAdmin();
+        });
 
         Passport::routes();
         Passport::tokensExpireIn(Carbon::now()->addMinutes(30));
