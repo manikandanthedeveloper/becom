@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Traits\ApiResponser;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ApiController extends Controller
 {
